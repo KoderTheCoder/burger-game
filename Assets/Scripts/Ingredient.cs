@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class Ingredient : MonoBehaviour {
     public float positionY;
-    public LevelManager lm;
+    LevelManager lm;
     GameObject plate;
     Rigidbody2D rb;
     BoxCollider2D bx;
     bool caught;
-    int level;
     float dropSpeed;
+    public Sprite[] sprites;
 	// Use this for initialization
 	void Start () {
         caught = false;
@@ -19,7 +19,10 @@ public class Ingredient : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, dropSpeed * -1);
         bx = GetComponent<BoxCollider2D>();
-        transform.localScale = new Vector3(2 - (GameManager.level - 1)*0.13f, 1, 1);
+        lm = FindObjectOfType<LevelManager>();
+        transform.localScale = new Vector3(2 - (GameManager.level - 1)*0.13f, transform.localScale.y, 1);
+        gameObject.GetComponent<SpriteRenderer>().sprite = sprites[Random.Range(0, sprites.Length)];
+        lm.sprites = sprites;
 	}
 	
 	// Update is called once per frame
@@ -36,6 +39,10 @@ public class Ingredient : MonoBehaviour {
         {
             if (other.gameObject.tag == "Player" || other.gameObject.tag == "Ingredient")
             {
+                if(gameObject.GetComponent<SpriteRenderer>().sprite.name == "top_bun_icon")
+                {
+                    lm.endGame();
+                }
                 if(lm.burgerStack.Count != 0)
                 {
                     transform.position = new Vector3(lm.burgerStack[lm.burgerStack.Count - 1].transform.position.x, lm.burgerStack[lm.burgerStack.Count - 1].transform.position.y + bx.size.y, lm.burgerStack[lm.burgerStack.Count -1].transform.position.z);

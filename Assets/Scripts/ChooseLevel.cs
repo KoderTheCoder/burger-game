@@ -6,10 +6,14 @@ public class ChooseLevel : MonoBehaviour {
 
     public void GoToLevel()
     {
-        Application.LoadLevel(transform.parent.gameObject.name);
+        
 
         char[] levelName = transform.parent.gameObject.name.ToCharArray();
-        GameManager.level = (int)levelName[levelName.Length];
+        print(GameManager.level);
+        GameManager.level = (int)char.GetNumericValue(levelName[levelName.Length - 1]);
+
+        Application.LoadLevel(transform.parent.gameObject.name);
+
     }
 
     public void GoBack()
