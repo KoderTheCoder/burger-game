@@ -111,7 +111,7 @@ MonoBehaviour:
   m_MinSize: {x: 917, y: 442}
   m_MaxSize: {x: 22012, y: 10021}
   vertical: 0
-  controlID: 126
+  controlID: 135
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -308,7 +308,7 @@ MonoBehaviour:
     m_VAllowExceedBaseRangeMax: 1
     m_ScaleWithWindow: 0
     m_HSlider: 0
-    m_VSlider: 1
+    m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
     m_EnableMouseInput: 1
     m_EnableSliderZoom: 0
@@ -320,7 +320,7 @@ MonoBehaviour:
       y: 17
       width: 1170
       height: 437
-    m_Scale: {x: 1, y: 1}
+    m_Scale: {x: 0.91041666, y: 0.91041666}
     m_Translation: {x: 585, y: 218.5}
     m_MarginLeft: 0
     m_MarginRight: 0
@@ -328,10 +328,10 @@ MonoBehaviour:
     m_MarginBottom: 0
     m_LastShownAreaInsideMargins:
       serializedVersion: 2
-      x: -585
-      y: -218.5
-      width: 1170
-      height: 437
+      x: -642.5629
+      y: -240
+      width: 1285.1259
+      height: 480
     m_MinimalGUI: 1
   m_defaultScale: 0.91041666
   m_TargetTexture: {fileID: 0}
@@ -368,14 +368,14 @@ MonoBehaviour:
     height: 451
   m_PersistentViewDataDictionary: {fileID: 0}
   m_SceneLighting: 1
-  lastFramingTime: 7258.6151055335295
+  lastFramingTime: 6236.7487314302825
   m_2DMode: 1
   m_isRotationLocked: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 292.15112, y: 246.08524, z: 0}
+    m_Target: {x: 357.05972, y: 240.62999, z: -0.125}
     speed: 2
-    m_Value: {x: 292.15112, y: 246.08524, z: 0}
+    m_Value: {x: 357.05972, y: 240.62999, z: -0.125}
   m_RenderMode: 0
   m_ValidateTrueMetals: 0
   m_SceneViewState:
@@ -403,9 +403,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 718.917
+    m_Target: 896.33124
     speed: 2
-    m_Value: 718.917
+    m_Value: 896.33124
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -520,26 +520,26 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 701dfeff7a1dfeff8e1dfeff8a23feffe42ffeff0c4dfeff9ca2feff4ac2feff54c2feffd6c3feff54cfffff7cf6ffffcef9ffff00000000
+    m_ExpandedIDs: 0a8ef9ff2ccbf9ff301ffbff2ccbfdff40e3fdffa6e4fdffc464feff6c81fefff883feff262bffff68c2ffffb2f8ffff86fbffff00000000e82900008a2a0000be2a0000d22a0000e02a00003a2b0000622b00007e2b00009e400000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
-      m_Name: 
-      m_OriginalName: 
+      m_Name: Canvas
+      m_OriginalName: Canvas
       m_EditFieldRect:
         serializedVersion: 2
         x: 0
         y: 0
         width: 0
         height: 0
-      m_UserData: 0
+      m_UserData: -406740
       m_IsWaitingForDelay: 0
       m_IsRenaming: 0
-      m_OriginalEventType: 11
+      m_OriginalEventType: 0
       m_IsRenamingFilename: 0
       m_ClientGUIView: {fileID: 9}
     m_SearchString: 
   m_ExpandedScenes:
-  - LevelSelector
+  - Level1
   m_CurrenRootInstanceID: 0
   m_Locked: 0
   m_CurrentSortingName: TransformSorting
@@ -582,19 +582,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 0
     m_Folders:
-    - Assets
+    - Assets/Sprites
   m_ViewMode: 1
   m_StartGridSize: 60
   m_LastFolders:
-  - Assets
+  - Assets/Sprites
   m_LastFoldersGridSize: 60
   m_LastProjectPath: C:\Users\Koder\Desktop\Unity\Burger Stacker
   m_IsLocked: 0
   m_FolderTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: d4280000
-    m_LastClickedID: 10452
-    m_ExpandedIDs: d428000000ca9a3bffffff7f
+    m_SelectedIDs: f8270000
+    m_LastClickedID: 10232
+    m_ExpandedIDs: 00000000762700004428000000ca9a3bffffff7f
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -622,7 +622,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 
+    m_ExpandedIDs: 0000000076270000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
