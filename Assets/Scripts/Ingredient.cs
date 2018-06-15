@@ -8,13 +8,13 @@ public class Ingredient : MonoBehaviour {
     GameObject plate;
     Rigidbody2D rb;
     BoxCollider2D bx;
-    bool caught;
+    public bool caught;
     float dropSpeed;
     public Sprite[] sprites;
 	// Use this for initialization
 	void Start () {
         caught = false;
-        dropSpeed = 3 + (GameManager.level - 1) * 0.2f;
+        dropSpeed = 3 + (GameManager.level - 1) * 0.3f;
         plate = GameObject.Find("BottomBun");
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = new Vector2(0, dropSpeed * -1);
@@ -41,7 +41,7 @@ public class Ingredient : MonoBehaviour {
             {
                 if(gameObject.GetComponent<SpriteRenderer>().sprite.name == "top_bun_icon")
                 {
-                    lm.endGame();
+                    lm.endGame(false);
                 }
                 if(lm.burgerStack.Count != 0)
                 {

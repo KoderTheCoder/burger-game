@@ -8,6 +8,8 @@ public class LevelManager : MonoBehaviour {
     public Text score;
     public IDictionary<string, int> sideTaskNumbers = new Dictionary<string, int>();
     public Sprite[] sprites;
+    int levelGoal;
+    public Text goal;
     int stars;
 
     public GameObject deathMenu;
@@ -18,16 +20,27 @@ public class LevelManager : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        /*for (int i = 1; i <= 6; ++i)
+        {
+            PlayerPrefs.SetInt("Level" + i.ToString() + "Stars", 0);
+            PlayerPrefs.SetInt("Level" + i.ToString() + "CompletedTask", 0);
+            PlayerPrefs.SetInt("Level" + i.ToString() + "BeatScore", 0);
+            PlayerPrefs.SetInt("Level" + i.ToString() + "BeatTopScore", 0);
+        }*/ //Reset all the player prefs
         burgerStack = new List<Ingredient>();
         int sideTaskLimit = 7 + GameManager.level;
+        levelGoal = sideTaskLimit;
+        goal.text = "Goal: " + levelGoal.ToString();
+        /*
         int limitHolder = 0;
+        
         for(int i = 0; i < sprites.Length && limitHolder < sideTaskLimit; i++)
         {
             int rand = Random.Range(0, sideTaskLimit / 2);
             sideTaskNumbers[sprites[i].name] = rand;
             limitHolder += rand;
         }
-
+        */
         CheckForPlayerPrefs();
 	}
 	
@@ -36,38 +49,53 @@ public class LevelManager : MonoBehaviour {
         score.text = "Stack: " + (burgerStack.Count - 1).ToString();
 	}
 
-    public void endGame()
+    public void endGame(bool badMeat)
     {
-        print(GameManager.level.ToString());
-        if (CompletedSideTask() && PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "CompletedTask")==0)
+        if (!badMeat)
         {
-            PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "Stars", stars + 1);
-            PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "CompletedTask", 1);
-            print("true1");
-        }
+            stars = PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "Stars");
+            print(GameManager.level.ToString());
+            if (CompletedMainTask(burgerStack.Count - 1) && PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "CompletedTask") == 0)
+            {
+                PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "Stars", ++stars);
+                PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "CompletedTask", 1);
+                print("true1");
+            }
 
-        if(burgerStack.Count - 1 > 10 && PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "BeatScore") == 0)
-        {
-            PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "Stars", stars + 1);
-            PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "BeatScore", 1);
-            print("true2");
-        }
+            if ((burgerStack.Count - 1) > 20 && PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "BeatScore") == 0)
+            {
+                PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "Stars", ++stars);
+                PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "BeatScore", 1);
+                print("true2");
+            }
 
-        if(burgerStack.Count - 1 > 30 && PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "BeatTopScore") == 0)
-        {
-            PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "Stars", stars + 1);
-            PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "BeatTopScore", 1);
-            print("true1");
+            if ((burgerStack.Count - 1) > 30 && PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "BeatTopScore") == 0)
+            {
+                PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "Stars", ++stars);
+                PlayerPrefs.SetInt("Level" + GameManager.level.ToString() + "BeatTopScore", 1);
+                print("true1");
+            }
         }
         
+        
 
-        stars = stars = PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "Stars");
+        stars = PlayerPrefs.GetInt("Level" + GameManager.level.ToString() + "Stars");
+        print("stars: " + stars);
         for (int i = 0; i < stars; ++i)
         {
             starImages[i].sprite = fullStar;
         }
         Time.timeScale = 0;
         deathMenu.SetActive(true);
+    }
+
+    bool CompletedMainTask(int stackSize)
+    {
+        if(stackSize >= levelGoal)
+        {
+            return true;
+        }
+        return false;
     }
 
     bool CompletedSideTask()

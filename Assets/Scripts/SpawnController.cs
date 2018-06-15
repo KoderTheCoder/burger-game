@@ -17,9 +17,27 @@ public class SpawnController : MonoBehaviour {
 	void Update () {
 		if(timeSinceLastSpawn > spawnInterval)
         {
-            Instantiate(objectToSpawn, transform.position, Quaternion.identity);
-            transform.position = new Vector3(Random.Range(-7, 7), transform.position.y, transform.position.z);
-            timeSinceLastSpawn = 0;
+            if(gameObject.name == "BadSpawner")
+            {
+                if (Random.Range(0, 8) > (6 - GameManager.level))
+                {
+                    Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+                    transform.position = new Vector3(Random.Range(-7, 7), transform.position.y, transform.position.z);
+                    timeSinceLastSpawn = 0;
+                }
+                else
+                {
+                    timeSinceLastSpawn = spawnInterval/2;
+                }
+                
+            }
+            else
+            {
+                Instantiate(objectToSpawn, transform.position, Quaternion.identity);
+                transform.position = new Vector3(Random.Range(-7, 7), transform.position.y, transform.position.z);
+                timeSinceLastSpawn = 0;
+            }
+            
         }
         else
         {
